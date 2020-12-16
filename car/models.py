@@ -18,3 +18,6 @@ class Car(models.Model):
     average_price = models.IntegerField()
     link = models.CharField(max_length=40)
     fuel_type = models.CharField(max_length=8)
+
+    def __str__(self):
+        return self.brand + " " + self.model + " " + self.city + " id: " + str(self.id)
