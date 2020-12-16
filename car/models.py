@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Car(models.Model):
@@ -21,3 +22,6 @@ class Car(models.Model):
 
     def __str__(self):
         return self.brand + " " + self.model + " " + self.city + " id: " + str(self.id)
+
+    def get_absolute_url(self):
+        return reverse("car_detail_url", kwargs={"id": self.id})

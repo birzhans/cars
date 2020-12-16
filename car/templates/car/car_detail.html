@@ -1,0 +1,59 @@
+{% extends 'template.html' %}
+
+{% block title %}
+{{car}}
+{% endblock %}
+
+{% block content %}
+<div style="padding-left: 100px;">
+	<h1 class="mt-5">
+		{{car.brand}} {{car.model}}
+	</h1>
+
+	<p>
+		Цена: {{car.price}}
+	</p>
+
+	<p>
+		Body type: {{car.body_type}}
+	</p>
+
+	<p>
+		Fuel type: {{car.fuel_type}}
+	</p>
+
+	<p>
+		wheel drive: {{car.wheel_drive}}
+	</p>
+
+	<p>
+		Mileage: {{car.mileage}}
+	</p>
+
+	<p>
+		Color: {{car.color}}
+	</p>
+
+	<p>
+		Engine volume: {{car.engine_volume}}
+	</p>
+
+	<p>
+		City: {{car.city}}
+	</p>
+
+	<p>
+		Year: {{car.year}}
+	</p>
+
+	<p>
+		Steering wheel: {{car.steering_wheel}}
+	</p>
+
+	<p>
+		Clearenced: {{car.custom_clearanced}}
+	</p>
+
+
+</div>
+{% endblock %}

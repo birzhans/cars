@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html>
+{% extends 'template.html' %}
 
-<head>
-	<title>Car index</title>
-</head>
 
-<body>
-	<h1>Car index </h1>
+
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-3">
 	{% for car in cars %}
-	<h2>{{ car }}</h2>
+	<div class="col m-4">
+		<div class="card" style="width: 18rem;">
+			<img src="{{product.photo.url}}" class="card-img-top">
+			<div class="card-body">
+				<h5 class="card-title">{{ car.brand }}</h5>
+				<p class="card-text">{{ car.model }}</p>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">Цена: {{ car.price}}</li>
+				<li class="list-group-item">Средняя цена: {{ car.average_price }}</li>
+			</ul>
+			<div class="card-body">
+				<a href="{{ car.get_absolute_url }}" class="btn btn-primary">Просмотр</a><br>
+			</div>
+		</div>
+	</div>
 	{% endfor %}
-</body>
-
-</html>
+</div>
+{% endblock %}
