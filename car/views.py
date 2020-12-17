@@ -12,6 +12,14 @@ def car_detail(request, id):
     return render(request, "car/car_detail.html", context={"car": car})
 
 
+def analysis(request):
+    return render(request, "car/predict_car.html")
+
+
+def predict_car(request):
+    return render(request, "car/predict_car.html")
+
+
 def find_car(request):
     brands = [
         "Nissan",
@@ -131,11 +139,3 @@ def find_car(request):
     return render(
         request, "car/find_car.html", context={"cars": cars, "brands": brands}
     )
-
-
-def predict_car(request):
-    return render(request, "car/predict_car.html")
-
-
-def analysis(request):
-    return render(request, "car/predict_car.html")
