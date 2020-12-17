@@ -15,6 +15,7 @@ def car_detail(request, id):
 def find_car(request):
     brands = ["Audi", "BMW"]
     brand = request.GET.get("brand", "")
+    brand = request.GET.get("model", "")
 
     if brand:
         cars = Car.objects.filter(brand__icontains=brand)[:20]
