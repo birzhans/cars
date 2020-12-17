@@ -10,19 +10,33 @@
 <form action="{% url 'find_car_url' %}">
 	<fieldset>
 		<legend>Disabled fieldset example</legend>
+
+		<!-- Brand -->
 		<div class="mb-3">
-			<label for="disabledTextInput" class="form-label">Disabled input</label>
-			<input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
-		</div>
-		<div class="mb-3">
-			<label for="disabledSelect" class="form-label">Disabled select menu</label>
+			<label for="disabledSelect" class="form-label">Brand</label>
 			<select id="disabledSelect" class="form-select" name="brand">
-				<option value="" disabled selected>Select your option</option>
+				<option value="" disabled selected>Select brand</option>
 				{% for brand in brands %}
 				<option>{{ brand }}</option>
 				{% endfor %}
 			</select>
 		</div>
+
+		<!-- Year -->
+		<div class="mb-3 year">
+			<label for="disabledTextInput" class="yearField form-label">Year: </label>
+			<input type="text" class="yearField yearInput" id="disabledTextInput" placeholder="From" name="yearFrom">
+			<input type="text" class="yearField yearInput" id="disabledTextInput" placeholder="To" name="yearTo">
+		</div>
+
+		<!-- Price -->
+		<div class="mb-3 year">
+			<label for="disabledTextInput" class="yearField form-label">Price: </label>
+			<input type="text" class="yearField yearInput" id="disabledTextInput" placeholder="From" name="priceFrom">
+			<input type="text" class="yearField yearInput" id="disabledTextInput" placeholder="To" name="priceTo">
+		</div>
+
+		<!-- Clearenced -->
 		<div class="mb-3">
 			<div class="form-check">
 				<input class="form-check-input" type="checkbox" id="disabledFieldsetCheck">
@@ -41,12 +55,12 @@
 		<div class="card" style="width: 18rem;">
 			<img src="{{product.photo.url}}" class="card-img-top">
 			<div class="card-body">
-				<h5 class="card-title">{{ car.brand }}</h5>
-				<p class="card-text">{{ car.model }}</p>
+				<h5 class="card-title">{{ car.get_name }}</h5>
+				<p class="card-text">Цена: {{ car.price}} {{ car.city}}</p>
 			</div>
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item">Цена: {{ car.price}}</li>
-				<li class="list-group-item">Средняя цена: {{ car.average_price }}</li>
+				<li class="list-group-item">{{car.body_type}} ({{car.engine_volume}}) </li>
+				<li class="list-group-item">Средняя цена: {{ car.average_price }} </li>
 			</ul>
 			<div class="card-body">
 				<a href="{{ car.get_absolute_url }}" class="btn btn-primary">Просмотр</a><br>

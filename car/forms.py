@@ -17,3 +17,5 @@ class FindForm(forms.Form):
     average_price = models.IntegerField()
     link = models.CharField(max_length=40)
     fuel_type = models.CharField(max_length=8)
+
+	
