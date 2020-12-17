@@ -94,7 +94,6 @@ def find_car(request):
         "Mercury",
         "Bugatti",
         "Daihatsu",
-        "ВИС",
         "Rolls-Royce",
         "Saturn",
         "BAIC",
