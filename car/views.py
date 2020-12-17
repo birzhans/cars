@@ -72,7 +72,6 @@ def find_car(request):
         "Bentley",
         "ЗАЗ",
         "Datsun",
-        "ТагАЗ",
         "FAW",
         "Scion",
         "BYD",
