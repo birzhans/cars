@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Car
 from .constants import *
+from .analysis import *
 
 # Create your views here.
 def index(request):
@@ -14,7 +15,8 @@ def car_detail(request, id):
 
 
 def analysis(request):
-    return render(request, "car/predict_car.html")
+    describe = describe()
+    return render(request, "car/predict_car.html", context={"describe": describe})
 
 
 def predict_car(request):
