@@ -1,5 +1,5 @@
 from django.urls import include, path
-from .views import *
+from .views import index, find_car, analysis, predict_car, car_detail
 
 urlpatterns = [
     path("", index, name="car_index_url"),

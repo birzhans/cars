@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import Car
 from .constants import *
-from .analysis import *
+
+from .anal import *
 
 # Create your views here.
 def index(request):
@@ -15,7 +16,7 @@ def car_detail(request, id):
 
 
 def analysis(request):
-    describe = describe()
+    describe = data.describe()
     return render(request, "car/predict_car.html", context={"describe": describe})
 
 
@@ -36,18 +37,16 @@ def find_car(request):
     if brand:
         cars = cars.filter(brand=brand)
 
-    if year_from and year_to:
-        cars = cars.filter(year__lte=int(year_to)).filter(year__gte=int(year_from))
-    elif year_from:
+    if year_from:
         cars = cars.filter(year__gte=int(year_from))
-    elif year_to:
+
+    if year_to:
         cars = cars.filter(year__lte=int(year_to))
 
-    if price_from and price_to:
-        cars = cars.filter(price__lte=int(price_to)).filter(year__gte=int(price_from))
-    elif price_from:
+    if price_from:
         cars = cars.filter(price__gte=int(price_from))
-    elif price_to:
+
+    if price_to:
         cars = cars.filter(price__lte=int(price_to))
 
     if cars.count() > 20:
