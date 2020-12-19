@@ -8,10 +8,8 @@
 	{% for car in cars %}
 	<div class="col m-4">
 		<div class="card" style="width: 18rem;">
-			<img src="{{product.photo.url}}" class="card-img-top">
 			<div class="card-body">
-				<h5 class="card-title">{{ car.brand }}</h5>
-				<p class="card-text">{{ car.model }}</p>
+				<h5 class="card-title">{{ car.get_name }}</h5>
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">Цена: {{ car.price}}</li>

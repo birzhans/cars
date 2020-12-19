@@ -6,7 +6,7 @@ from .anal import *
 
 # Create your views here.
 def index(request):
-    cars = Car.objects.all()[:100]
+    cars = Car.objects.all()[:21]
     return render(request, "car/index.html", context={"cars": cars})
 
 
