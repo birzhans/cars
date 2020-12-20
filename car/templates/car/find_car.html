@@ -9,56 +9,158 @@
 <h2>Find Car</h2>
 <form action="{% url 'find_car_url' %}">
 	<fieldset>
-		<legend>Disabled fieldset example</legend>
-
-		<!-- Brand -->
-		<div class="mb-3">
-			<label for="disabledSelect" class="form-label">Brand</label>
-			<select id="disabledSelect" class="form-select" name="brand">
-				<option value="" disabled selected>Select brand</option>
-				{% for brand in brands %}
-				<option>{{ brand }}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<!-- Brand -->
-		<div class="mb-3">
-			<label for="disabledSelect" class="form-label">City</label>
-			<select id="disabledSelect" class="form-select" name="city">
-				<option value="" disabled selected>Select city</option>
-				{% for city in cities %}
-				<option>{{ city }}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<!-- Year -->
-		<div class="mb-3 year">
-			<label for="disabledTextInput" class="yearField form-label">Year: </label>
-			<input type="text" class="yearField yearInput" id="disabledTextInput" placeholder="From" name="yearFrom">
-			<input type="text" class="yearField yearInput" id="disabledTextInput" placeholder="To" name="yearTo">
-		</div>
-
-		<!-- Price -->
-		<div class="mb-3 year">
-			<label for="disabledTextInput" class="yearField form-label">Price: </label>
-			<input type="text" class="yearField yearInput" id="disabledTextInput" placeholder="From" name="priceFrom">
-			<input type="text" class="yearField yearInput" id="disabledTextInput" placeholder="To" name="priceTo">
-		</div>
-
-		<!-- Clearenced -->
-		<div class="mb-3">
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" name="clearenced">
-				<label class="form-check-label" for="disabledFieldsetCheck">
-					Clearenced
-				</label>
+		<legend>Configure your query</legend>
+		<div class="row">
+			<!-- Brand -->
+			<div class="col-md-4 mb-3">
+				<label for="disabledSelect" class="form-label">Brand</label>
+				<select id="disabledSelect" class="custom-select d-block w-100" name="brand">
+					<option value="" disabled selected>Select brand</option>
+					{% for brand in brands %}
+					<option>{{ brand }}</option>
+					{% endfor %}
+				</select>
 			</div>
+
+			<!-- body_type -->
+			<div class="col-md-4 mb-3">
+				<label for="state">Body type</label>
+				<select class="custom-select d-block w-100" id="state" name="body_type">
+					<option value="">Select BrandType</option>
+					{% for body_type in body_types %}
+					<option>{{ body_type }}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
+
+			<!-- fuel_type -->
+			<div class="col-md-4 mb-3">
+				<label for="state">Fuel type</label>
+				<select class="custom-select d-block w-100" id="state" name="fuel_type">
+					<option value="">Select FuelType</option>
+					{% for fuel_type in fuel_types %}
+					<option>{{ fuel_type }}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
+
+
+			<!--  wheel_type -->
+			<div class="col-md-4 mb-3">
+				<label for="state">Wheel type</label>
+				<select class="custom-select d-block w-100" id="state" name="wheel_type">
+					<option value="">Select Color</option>
+					{% for wheel_drive in wheel_drives %}
+					<option>{{ wheel_drive }}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
+
+
+			<!--  color -->
+			<div class="col-md-4 mb-3">
+				<label for="state">Color</label>
+				<select class="custom-select d-block w-100" id="state" name="color">
+					<option value="">Select Color</option>
+					{% for color in colors %}
+					<option>{{ color }}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
+
+			<!-- engine_volume -->
+			<div class="col-md-4 mb-3">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="firstName">Engine volume from:</label>
+						<input type="text" class="form-control" id="firstName" placeholder="From" name="engineFrom"
+							value="">
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="lastName">Engine volune to:</label>
+						<input type="text" class="form-control" id="lastName" placeholder="To" name="engineTo" value="">
+					</div>
+				</div>
+			</div>
+
+			<!-- City -->
+			<div class="col-md-4 mb-3">
+				<label for="disabledSelect" class="form-label">City</label>
+				<select id="disabledSelect" class="custom-select d-block w-100" name="city">
+					<option value="" disabled selected>Select city</option>
+					{% for city in cities %}
+					<option>{{ city }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<!-- Price -->
+			<div class="col-md-4 mb-3">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="firstName">Price from:</label>
+						<input type="text" class="form-control" id="firstName" placeholder="From" name="priceFrom"
+							value="">
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="lastName">Price to:</label>
+						<input type="text" class="form-control" id="lastName" placeholder="To" name="priceTo" value="">
+					</div>
+				</div>
+			</div>
+
+			<!-- Year -->
+			<div class="col-md-4 mb-3">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="firstName">Year from:</label>
+						<input type="text" class="form-control" id="firstName" placeholder="From" name="yearFrom"
+							value="">
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="lastName">Year to:</label>
+						<input type="text" class="form-control" id="lastName" placeholder="To" name="yearTo" value="">
+					</div>
+				</div>
+			</div>
+
+			<!-- Order -->
+			<div class="col-md-4  mb-3">
+				<label for="disabledSelect">Order by</label>
+				<select class="custom-select d-block w-100" name=" order">
+					<option value="" disabled selected>Select Order Attribute</option>
+					{% for attr in attributes %}
+					<option>{{ attr }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<!-- Clearenced -->
+			<div class="col-md-4 mb-3">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" name="clearenced">
+					<label class="form-check-label" for="disabledFieldsetCheck">
+						Clearenced
+					</label>
+				</div>
+
+
+			</div>
+
+			<button type="submit" class="col-md-4 btn btn-primary">Submit</button>
+
 		</div>
-
-
-		<button type="submit" class="btn btn-primary">Submit</button>
 	</fieldset>
 
 </form>
@@ -75,6 +177,9 @@
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">{{car.body_type}} ({{car.engine_volume}}) </li>
 				<li class="list-group-item">Средняя цена: {{ car.average_price }} </li>
+				<li class="list-group-item">
+					Отклонение от цены: {{ car.price_difference_percent }}
+				</li>
 			</ul>
 			<div class="card-body">
 				<a href="{{ car.get_absolute_url }}" class="btn btn-primary">Просмотр</a><br>
