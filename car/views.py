@@ -17,7 +17,7 @@ def car_detail(request, id):
 
 def analysis(request):
     describe = data.describe()
-    return render(request, "car/predict_car.html", context={"describe": describe})
+    return render(request, "car/analysis.html", context={"describe": describe})
 
 
 def predict_car(request):
@@ -27,6 +27,11 @@ def predict_car(request):
 def find_car(request):
     brands = get_brands()
     cities = get_cities()
+    attributes = get_attributes()
+    body_types = get_body_types()
+    fuel_types = get_fuel_types()
+    wheel_drives = get_wheel_drives()
+    colors = get_colors()
 
     brand = request.GET.get("brand", "")
     year_from = request.GET.get("yearFrom", "")
@@ -35,6 +40,13 @@ def find_car(request):
     price_to = request.GET.get("priceTo", "")
     city = request.GET.get("city", "")
     clearenced = request.GET.get("clearenced", "")
+    order = request.GET.get("order", "")
+    engine_volume_from = request.GET.get("engineFrom", "")
+    engine_volume_to = request.GET.get("engineTo", "")
+    body_type = request.GET.get("body_type", "")
+    fuel_type = request.GET.get("fuel_type", "")
+    wheel_drive = request.GET.get("wheel_drive", "")
+    color = request.GET.get("color", "")
 
     cars = Car.objects.all()
 
@@ -56,14 +68,47 @@ def find_car(request):
     if city:
         cars = cars.filter(city=city)
 
-    if clearenced == "on":
-        cars = cars.filter(custom_clearanced=False)
+    if engine_volume_from:
+        cars = cars.filter(engine_volume__gte=float(engine_volume_from))
+
+    if engine_volume_to:
+        cars = cars.filter(engine_volume__lte=float(engine_volume_to))
+
+    if color:
+        cars = cars.filter(color=color)
+
+    if wheel_drive:
+        cars = cars.filter(wheel_drive=wheel_drive)
+
+    if fuel_type:
+        cars = cars.filter(fuel_type=fuel_type)
+
+    if body_type:
+        cars = cars.filter(body_type=body_type)
+
+    cars = cars.filter(custom_clearanced=True)
+
+    if order:
+        cars = cars.order_by(order).reverse()
+    else:
+        cars = cars.order_by("price_difference_percent").reverse()
 
     if cars.count() > 20:
-        cars = cars[:20]
+        cars = cars[:21]
+
+    context = {
+        "cars": cars,
+        "brands": brands,
+        "body_types": body_types,
+        "fuel_types": fuel_types,
+        "wheel_drives": wheel_drives,
+        "colors": colors,
+        "cities": cities,
+        "attributes": attributes,
+    }
 
     return render(
         request,
         "car/find_car.html",
-        context={"cars": cars, "brands": brands, "cities": cities},
+        context=context,
     )
