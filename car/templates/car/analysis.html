@@ -1,0 +1,41 @@
+{% extends 'template.html' %}
+{% load static %}
+
+{% block title %}
+{{ Analysis }}
+{% endblock %}
+
+{% block content %}
+
+<h3>Data Analysis</h3>
+<hr>
+
+<div class="row">
+	<div class="col-6">
+		<h4>Top 10 Brands</h4>
+		<img src="{% static 'brands.png' %}" class="m-3" style="height: 500px;">
+		<hr>
+	</div>
+
+	<div class="col-6">
+		<h4>Top 10 models of top 10 brands</h4>
+		<img src="{% static 'models.png' %}" class="m-3" style="height: 500px;">
+		<hr>
+	</div>
+</div>
+
+<h4>Attributes correlation matrix</h4>
+<img src="{% static 'corr.png' %}" class="m-3" style="height: 300px;">
+<hr>
+
+<h4>Brand boxplots</h4>
+<img src="{% static 'boxplots.png' %}" class="m-3" style="height: 500px;">
+<hr>
+
+<h4>Top 10 brands boxplots</h4>
+<img src="{% static 'top_boxplots.png' %}" class="m-3" style="height: 500px;">
+<hr>
+
+
+
+{% endblock %}

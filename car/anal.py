@@ -7,7 +7,7 @@ pd.set_option("display.max_colwidth", -1)
 
 path = os.getcwd()
 data_csv = pd.read_csv(
-    os.path.abspath(os.path.join(path, os.pardir)) + "/cars/dataset.csv", sep=";"
+    os.path.abspath(os.path.join(path, os.pardir)) + "/cars/cars.csv"
 )
 
 
