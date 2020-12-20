@@ -26,11 +26,15 @@ def predict_car(request):
 
 def find_car(request):
     brands = get_brands()
+    cities = get_cities()
+
     brand = request.GET.get("brand", "")
     year_from = request.GET.get("yearFrom", "")
     year_to = request.GET.get("yearTo", "")
     price_from = request.GET.get("priceFrom", "")
     price_to = request.GET.get("priceTo", "")
+    city = request.GET.get("city", "")
+    clearenced = request.GET.get("clearenced", "")
 
     cars = Car.objects.all()
 
@@ -49,9 +53,17 @@ def find_car(request):
     if price_to:
         cars = cars.filter(price__lte=int(price_to))
 
+    if city:
+        cars = cars.filter(city=city)
+
+    if clearenced == "on":
+        cars = cars.filter(custom_clearanced=False)
+
     if cars.count() > 20:
         cars = cars[:20]
 
     return render(
-        request, "car/find_car.html", context={"cars": cars, "brands": brands}
+        request,
+        "car/find_car.html",
+        context={"cars": cars, "brands": brands, "cities": cities},
     )

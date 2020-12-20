@@ -17,6 +17,7 @@ class Car(models.Model):
     custom_clearanced = models.BooleanField(default=True)
     price = models.IntegerField()
     average_price = models.IntegerField()
+    price_difference_percent = models.FloatField()
     link = models.CharField(max_length=40)
     fuel_type = models.CharField(max_length=8)
 
@@ -25,6 +26,16 @@ class Car(models.Model):
 
     def get_name(self):
         return self.brand + " " + self.model + " (" + str(self.year) + ")"
+
+    def get_price_difference_p(self):
+        if self.average_price > 0:
+            percent = 100 - (self.price / self.average_price) * 100
+            percent = round(percent, 2)
+            return percent
+        return 0
+
+    def string_price(self):
+        return f"{'{:,}'.format(self.price)}."
 
     def get_absolute_url(self):
         return reverse("car_detail_url", kwargs={"id": self.id})

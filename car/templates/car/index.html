@@ -12,8 +12,11 @@
 				<h5 class="card-title">{{ car.get_name }}</h5>
 			</div>
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item">Цена: {{ car.price}}</li>
+				<li class="list-group-item">Цена: {{ car.string_price}}</li>
 				<li class="list-group-item">Средняя цена: {{ car.average_price }}</li>
+				<li class="list-group-item">
+					Отклонение от цены: {{ car.get_price_difference_p }}
+				</li>
 			</ul>
 			<div class="card-body">
 				<a href="{{ car.get_absolute_url }}" class="btn btn-primary">Просмотр</a><br>
