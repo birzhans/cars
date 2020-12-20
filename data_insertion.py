@@ -1,6 +1,6 @@
 import pandas
 
-data = pandas.read_csv("dataset.csv")
+data = pandas.read_csv("cars.csv")
 l = data.shape[0]
 
 
@@ -13,24 +13,25 @@ def av_p(p):
     return a
 
 
-for i in range(11, l):
+for i in range(1000):
     row = data.loc[i, :]
     _, created = Car.objects.get_or_create(
         id=i,
-        brand=row[0],
-        model=row[1],
-        year=int(row[2]),
-        city=row[3],
-        body_type=row[4],
-        engine_volume=round(float(row[5]), 1),
-        mileage=int(row[6]),
-        gear_type=row[7],
-        steering_wheel=row[8],
-        color=row[9],
-        wheel_drive=row[10],
-        custom_clearanced=True if "Да" == row[11] else False,
-        price=int(row[12]),
-        average_price=av_p(row[13]),
-        link=row[14],
-        fuel_type=row[15],
+        brand=row[1],
+        model=row[2],
+        year=int(row[3]),
+        city=row[4],
+        body_type=row[5],
+        engine_volume=round(float(row[6]), 1),
+        mileage=int(row[7]),
+        gear_type=row[8],
+        steering_wheel=row[9],
+        color=row[10],
+        wheel_drive=row[11],
+        custom_clearanced=True if "Да" == row[12] else False,
+        price=int(row[13]),
+        average_price=av_p(row[14]),
+        link=row[15],
+        fuel_type=row[16],
+        price_difference_percent=row[17],
     )
