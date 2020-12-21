@@ -12,7 +12,7 @@
 		<legend>Configure your query</legend>
 		<div class="row">
 			<!-- Brand -->
-			<div class="col-md-4 mb-3">
+			<div class="col-md-3 mb-3">
 				<label for="disabledSelect" class="form-label">Brand</label>
 				<select id="disabledSelect" class="custom-select d-block w-100" name="brand">
 					<option value="" disabled selected>Select brand</option>
@@ -22,11 +22,34 @@
 				</select>
 			</div>
 
+			<!-- Model -->
+			<div class="col-md-3 mb-3">
+				<label for="lastName">Model</label>
+				<input type="text" class="form-control" id="lastName" placeholder="model" name="model" value="">
+			</div>
+
+			<!-- Year -->
+			<div class="col-md-3 mb-3">
+				<label for="lastName">Year</label>
+				<input type="text" class="form-control" id="lastName" placeholder="year" name="year" value="">
+			</div>
+
+			<!-- City -->
+			<div class="col-md-3 mb-3">
+				<label for="disabledSelect" class="form-label">City</label>
+				<select id="disabledSelect" class="custom-select d-block w-100" name="city">
+					<option value="" disabled selected>Select city</option>
+					{% for city in cities %}
+					<option>{{ city }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
 			<!-- body_type -->
-			<div class="col-md-4 mb-3">
+			<div class="col-md-3 mb-3">
 				<label for="state">Body type</label>
 				<select class="custom-select d-block w-100" id="state" name="body_type">
-					<option value="">Select BrandType</option>
+					<option value="">Select Body Type</option>
 					{% for body_type in body_types %}
 					<option>{{ body_type }}</option>
 					{% endfor %}
@@ -36,38 +59,42 @@
 				</div>
 			</div>
 
-			<!-- fuel_type -->
-			<div class="col-md-4 mb-3">
-				<label for="state">Fuel type</label>
-				<select class="custom-select d-block w-100" id="state" name="fuel_type">
-					<option value="">Select FuelType</option>
-					{% for fuel_type in fuel_types %}
-					<option>{{ fuel_type }}</option>
-					{% endfor %}
-				</select>
-				<div class="invalid-feedback">
-					Please provide a valid state.
-				</div>
+			<!-- engine_volume -->
+			<div class="col-md-3 mb-3">
+				<label for="lastName">Engine volume</label>
+				<input type="text" class="form-control" id="lastName" placeholder="volume" name="engine" value="">
 			</div>
 
-
-			<!--  wheel_type -->
-			<div class="col-md-4 mb-3">
-				<label for="state">Wheel type</label>
-				<select class="custom-select d-block w-100" id="state" name="wheel_type">
-					<option value="">Select Color</option>
-					{% for wheel_drive in wheel_drives %}
-					<option>{{ wheel_drive }}</option>
-					{% endfor %}
-				</select>
-				<div class="invalid-feedback">
-					Please provide a valid state.
-				</div>
+			<!-- mileage -->
+			<div class="col-md-3 mb-3">
+				<label for="lastName">Mileage</label>
+				<input type="text" class="form-control" id="lastName" placeholder="Mileage" name="mileage" value="">
 			</div>
 
+			<!-- gear_type -->
+			<div class="col-md-3 mb-3">
+				<label for="lastName">Gear type</label>
+				<select class="custom-select d-block w-100" id="state" name="gear_type">
+					<option value="">Select gear</option>
+					{% for color in gear_types %}
+					<option>{{ color }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<!-- wheel -->
+			<div class="col-md-3 mb-3">
+				<label for="lastName">Steering wheel</label>
+				<select class="custom-select d-block w-100" id="state" name="steering_wheel">
+					<option value="">Select wheel</option>
+					{% for color in steering_wheels %}
+					<option>{{ color }}</option>
+					{% endfor %}
+				</select>
+			</div>
 
 			<!--  color -->
-			<div class="col-md-4 mb-3">
+			<div class="col-md-3 mb-3">
 				<label for="state">Color</label>
 				<select class="custom-select d-block w-100" id="state" name="color">
 					<option value="">Select Color</option>
@@ -80,71 +107,60 @@
 				</div>
 			</div>
 
-			<!-- engine_volume -->
-			<div class="col-md-4 mb-3">
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="firstName">Engine volume from:</label>
-						<input type="text" class="form-control" id="firstName" placeholder="From" name="engineFrom"
-							value="">
-					</div>
-					<div class="col-md-6 mb-3">
-						<label for="lastName">Engine volune to:</label>
-						<input type="text" class="form-control" id="lastName" placeholder="To" name="engineTo" value="">
-					</div>
-				</div>
-			</div>
-
-			<!-- City -->
-			<div class="col-md-4 mb-3">
-				<label for="disabledSelect" class="form-label">City</label>
-				<select id="disabledSelect" class="custom-select d-block w-100" name="city">
-					<option value="" disabled selected>Select city</option>
-					{% for city in cities %}
-					<option>{{ city }}</option>
+			<!--  wheel_drive -->
+			<div class="col-md-2 mb-3">
+				<label for="state">Wheel drive</label>
+				<select class="custom-select d-block w-100" id="state" name="wheel_type">
+					<option value="">Select</option>
+					{% for wheel_drive in wheel_drives %}
+					<option>{{ wheel_drive }}</option>
 					{% endfor %}
 				</select>
-			</div>
-
-
-			<!-- Year -->
-			<div class="col-md-4 mb-3">
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="firstName">Year from:</label>
-						<input type="text" class="form-control" id="firstName" placeholder="From" name="yearFrom"
-							value="">
-					</div>
-					<div class="col-md-6 mb-3">
-						<label for="lastName">Year to:</label>
-						<input type="text" class="form-control" id="lastName" placeholder="To" name="yearTo" value="">
-					</div>
+				<div class="invalid-feedback">
+					Please provide a valid state.
 				</div>
 			</div>
 
 			<!-- Clearenced -->
-			<div class="col-md-4 mb-3">
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" name="clearenced">
-					<label class="form-check-label" for="disabledFieldsetCheck">
-						Clearenced
-					</label>
-				</div>
-
-
+			<div class="col-md-2 mb-3">
+				<label for="disabledSelect" class="form-label">Clearenced</label>
+				<select id="disabledSelect" class="custom-select d-block w-100" name="clear">
+					<option value="" disabled selected>Clearenced</option>
+					<option>Да</option>
+					<option>Нет</option>
+				</select>
 			</div>
 
-			<button type="submit" class="col-md-4 btn btn-primary">Submit</button>
-
+			<!-- fuel_type -->
+			<div class="col-md-2 mb-3">
+				<label for="state">Fuel type</label>
+				<select class="custom-select d-block w-100" id="state" name="fuel_type">
+					<option value="">Fuel Type</option>
+					{% for fuel_type in fuel_types %}
+					<option>{{ fuel_type }}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
 		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
 	</fieldset>
 
 </form>
 
+<h1>Prediction: {{ prediction }}</h1>
 
-<div class="row">
-	{% for key, value in params.items %}
-	<p>{{ value }}</p><br>
-	{% endfor %}
-</div>
+<table class="table">
+
+	<div class="row">
+		{% for key, value in params.items %}
+		<div class="col-6">
+			<b>{{ key }}:</b> {{ value }}
+			<hr>
+		</div>
+		{% endfor %}
+	</div>
+</table>
 {% endblock %}
