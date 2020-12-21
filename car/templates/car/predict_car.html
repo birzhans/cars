@@ -6,8 +6,145 @@
 
 
 {% block content %}
+<h2>Find Car</h2>
+<form action="{% url 'predict_price_url' %}">
+	<fieldset>
+		<legend>Configure your query</legend>
+		<div class="row">
+			<!-- Brand -->
+			<div class="col-md-4 mb-3">
+				<label for="disabledSelect" class="form-label">Brand</label>
+				<select id="disabledSelect" class="custom-select d-block w-100" name="brand">
+					<option value="" disabled selected>Select brand</option>
+					{% for brand in brands %}
+					<option>{{ brand }}</option>
+					{% endfor %}
+				</select>
+			</div>
 
-<h3>Predict Car</h3>
+			<!-- body_type -->
+			<div class="col-md-4 mb-3">
+				<label for="state">Body type</label>
+				<select class="custom-select d-block w-100" id="state" name="body_type">
+					<option value="">Select BrandType</option>
+					{% for body_type in body_types %}
+					<option>{{ body_type }}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
 
-{{ describe }}
+			<!-- fuel_type -->
+			<div class="col-md-4 mb-3">
+				<label for="state">Fuel type</label>
+				<select class="custom-select d-block w-100" id="state" name="fuel_type">
+					<option value="">Select FuelType</option>
+					{% for fuel_type in fuel_types %}
+					<option>{{ fuel_type }}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
+
+
+			<!--  wheel_type -->
+			<div class="col-md-4 mb-3">
+				<label for="state">Wheel type</label>
+				<select class="custom-select d-block w-100" id="state" name="wheel_type">
+					<option value="">Select Color</option>
+					{% for wheel_drive in wheel_drives %}
+					<option>{{ wheel_drive }}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
+
+
+			<!--  color -->
+			<div class="col-md-4 mb-3">
+				<label for="state">Color</label>
+				<select class="custom-select d-block w-100" id="state" name="color">
+					<option value="">Select Color</option>
+					{% for color in colors %}
+					<option>{{ color }}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
+
+			<!-- engine_volume -->
+			<div class="col-md-4 mb-3">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="firstName">Engine volume from:</label>
+						<input type="text" class="form-control" id="firstName" placeholder="From" name="engineFrom"
+							value="">
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="lastName">Engine volune to:</label>
+						<input type="text" class="form-control" id="lastName" placeholder="To" name="engineTo" value="">
+					</div>
+				</div>
+			</div>
+
+			<!-- City -->
+			<div class="col-md-4 mb-3">
+				<label for="disabledSelect" class="form-label">City</label>
+				<select id="disabledSelect" class="custom-select d-block w-100" name="city">
+					<option value="" disabled selected>Select city</option>
+					{% for city in cities %}
+					<option>{{ city }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+
+			<!-- Year -->
+			<div class="col-md-4 mb-3">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="firstName">Year from:</label>
+						<input type="text" class="form-control" id="firstName" placeholder="From" name="yearFrom"
+							value="">
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="lastName">Year to:</label>
+						<input type="text" class="form-control" id="lastName" placeholder="To" name="yearTo" value="">
+					</div>
+				</div>
+			</div>
+
+			<!-- Clearenced -->
+			<div class="col-md-4 mb-3">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" name="clearenced">
+					<label class="form-check-label" for="disabledFieldsetCheck">
+						Clearenced
+					</label>
+				</div>
+
+
+			</div>
+
+			<button type="submit" class="col-md-4 btn btn-primary">Submit</button>
+
+		</div>
+	</fieldset>
+
+</form>
+
+
+<div class="row">
+	{% for key, value in params.items %}
+	<p>{{ value }}</p><br>
+	{% endfor %}
+</div>
 {% endblock %}

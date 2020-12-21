@@ -16,12 +16,50 @@ def car_detail(request, id):
 
 
 def analysis(request):
-    describe = data.describe()
-    return render(request, "car/analysis.html", context={"describe": describe})
+    return render(request, "car/analysis.html")
 
 
 def predict_car(request):
-    return render(request, "car/predict_car.html")
+    brands = get_brands()
+    cities = get_cities()
+    attributes = get_attributes()
+    body_types = get_body_types()
+    fuel_types = get_fuel_types()
+    wheel_drives = get_wheel_drives()
+    colors = get_colors()
+
+    brand = request.GET.get("brand", "")
+    year = request.GET.get("year", "")
+    city = request.GET.get("city", "")
+    clearenced = request.GET.get("clearenced", "")
+    engine_volume = request.GET.get("engine", "")
+    body_type = request.GET.get("body_type", "")
+    fuel_type = request.GET.get("fuel_type", "")
+    wheel_drive = request.GET.get("wheel_drive", "")
+    color = request.GET.get("color", "")
+
+    params = {
+        "brand": brand,
+        "body": body_type,
+        "year": year,
+        "clearenced": clearenced,
+        "engine_volume": engine_volume,
+        "fuel_type": fuel_type,
+        "wheel_drive": wheel_drive,
+        "color": color,
+    }
+
+    context = {
+        "brands": brands,
+        "body_types": body_types,
+        "fuel_types": fuel_types,
+        "wheel_drives": wheel_drives,
+        "colors": colors,
+        "cities": cities,
+        "attributes": attributes,
+        "params": params,
+    }
+    return render(request, "car/predict_car.html", context=context)
 
 
 def find_car(request):
