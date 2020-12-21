@@ -26,7 +26,7 @@
 			<div class="col-md-4 mb-3">
 				<label for="state">Body type</label>
 				<select class="custom-select d-block w-100" id="state" name="body_type">
-					<option value="">Select BrandType</option>
+					<option value="">Select Brand</option>
 					{% for body_type in body_types %}
 					<option>{{ body_type }}</option>
 					{% endfor %}
@@ -40,7 +40,7 @@
 			<div class="col-md-4 mb-3">
 				<label for="state">Fuel type</label>
 				<select class="custom-select d-block w-100" id="state" name="fuel_type">
-					<option value="">Select FuelType</option>
+					<option value="">Select Fuel Type</option>
 					{% for fuel_type in fuel_types %}
 					<option>{{ fuel_type }}</option>
 					{% endfor %}
@@ -154,13 +154,9 @@
 						Clearenced
 					</label>
 				</div>
-
-
 			</div>
-
-			<button type="submit" class="col-md-4 btn btn-primary">Submit</button>
-
 		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
 	</fieldset>
 
 </form>
