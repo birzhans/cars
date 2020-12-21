@@ -1,16 +1,21 @@
-{% extends "base.html" %}
+{% extends "template.html" %}
 
 {% block title %}
 Login - {{ block.super }}
 {% endblock %}
-
-{% block main %}
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button
-        class="btn btn-primary">
-      Log In
-    </button>
-  </form>
+{% block content %}
+<div class="container">
+    <main>
+      <div class="row g-3" style="margin-top: 10em; text-align: center; margin-left: 300px;">
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button
+                class="btn btn-primary">
+              Log In
+            </button>
+          </form>
+      </div>
+    </main>
+</div>
 {% endblock %}

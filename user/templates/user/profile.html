@@ -1,16 +1,26 @@
-{% extends 'templates.html' %}
+{% extends 'template.html' %}
 {% block content %}
-<div class="container">
-    <section class="jumbotron text-center bg-white">
-        <div class="container">
-            <h1>User Dashboard</h1>
-            <p class="lead text-muted">Something short and leading about the collection below—its contents, the
-                creator,
-                etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-            <p>
-                <a href="#" class="btn btn-primary my-2">Logout</a>
-            </p>
-        </div>
-    </section>
+
+<div class="row row-cols-1 row-cols-md-3">
+		{% for car in favourite_car %}
+		<div class="col m-4">
+			<div class="card" style="width: 18rem;">
+				<img src="{{ product.photo.url }}" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title">{{ car.get_name }}</h5>
+					<p class="card-text">Цена: {{ car.price}} {{ car.city}}</p>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">{{car.body_type}} ({{car.engine_volume}}) </li>
+					<li class="list-group-item">Средняя цена: {{ car.average_price }} </li>
+				</ul>
+				<div class="card-body">
+					<a href="{{ car.get_absolute_url }}" class="btn btn-primary">Просмотр</a><br>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
 </div>
+
 {% endblock %}
+

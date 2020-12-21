@@ -55,5 +55,13 @@
 	</p>
 
 
+		{% if is_favourite %}
+		<a class="btn btn-primary" href="{% url 'favourite_car' id=car.id %}" role="button">delete from favourites</a>
+		{% else %}
+		<a class="btn btn-primary" href="{% url 'favourite_car' id=car.id %}" role="button">add to favourtie</a>
+		{% endif %}
+
+
+
 </div>
 {% endblock %}

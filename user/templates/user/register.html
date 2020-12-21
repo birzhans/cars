@@ -1,14 +1,21 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 
-{% block main %}
-  <h1>Register for MyMDB</h1>
-  <form method="post">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button
-        type="submit"
-        class="btn btn-primary">
-      Register
-    </button>
-  </form>
+{% block content %}
+
+
+<div class="container">
+    <main style="margin-top: 10em;">
+      <div class="row g-3">
+        <form method="post">
+          {{ form.as_p }}
+          {% csrf_token %}
+          <button
+              type="submit"
+              class="btn btn-primary">
+            Register
+          </button>
+        </form>
+      </div>
+    </main>
+</div>
 {% endblock %}

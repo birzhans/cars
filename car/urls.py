@@ -1,5 +1,6 @@
 from django.urls import include, path
-from .views import index, find_car, analysis, predict_car, car_detail
+from .views import index, find_car, analysis, predict_car, car_detail, favorite_car
+
 
 urlpatterns = [
     path("", index, name="car_index_url"),
@@ -7,4 +8,6 @@ urlpatterns = [
     path("analysis/", analysis, name="analysis_url"),
     path("predict-price/", predict_car, name="predict_price_url"),
     path("<str:id>/", car_detail, name="car_detail_url"),
+    path("<str:id>/favourite_car/", favorite_car, name="favourite_car"),
+
 ]
