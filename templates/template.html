@@ -16,7 +16,9 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
-			<a class="navbar-brand" href="{% url 'index_url' %}">Home</a>
+
+			<a class="navbar-brand" href="{% url 'index_url' %}"><i class="fas fa-car"
+					style="font-size: 3em; color: Tomato; margin-right: 3px;"></i></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -31,11 +33,12 @@
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="{% url 'find_car_url' %}">Find Car</a>
+						<a class="nav-link btn btn-success active" href="{% url 'find_car_url' %}">Find Car</a>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="{% url 'predict_price_url' %}">Predict Price</a>
+						<a class="nav-link btn btn-primary active ml-2" href="{% url 'predict_price_url' %}">Predict
+							Price</a>
 					</li>
 
 					<li class="nav-item">
