@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Car
 from .constants import *
-
+from .predict import *
 from .anal import *
 
 # Create your views here.
@@ -27,27 +27,76 @@ def predict_car(request):
     fuel_types = get_fuel_types()
     wheel_drives = get_wheel_drives()
     colors = get_colors()
+    gear_types = get_gear_type()
+    steering_wheels = get_steering_wheel()
 
     brand = request.GET.get("brand", "")
+    model = request.GET.get("model", "")
     year = request.GET.get("year", "")
+    if year:
+        year = int(year)
     city = request.GET.get("city", "")
-    clearenced = request.GET.get("clearenced", "")
-    engine_volume = request.GET.get("engine", "")
+
     body_type = request.GET.get("body_type", "")
-    fuel_type = request.GET.get("fuel_type", "")
-    wheel_drive = request.GET.get("wheel_drive", "")
+    engine_volume = request.GET.get("engine", "")
+
+    if engine_volume:
+        engine_volume = float(engine_volume)
+
+    mileage = request.GET.get("mileage", "")
+
+    if mileage:
+        mileage = int(mileage)
+    else:
+        mileage = None
+    gear_type = request.GET.get("gear_type", "")
+
+    steering_wheel = request.GET.get("steering_wheel", "")
     color = request.GET.get("color", "")
+    wheel_drive = request.GET.get("wheel_drive", "")
+    clear = request.GET.get("clear", "")
+
+    fuel_type = request.GET.get("fuel_type", "")
 
     params = {
         "brand": brand,
-        "body": body_type,
+        "model": model,
         "year": year,
-        "clearenced": clearenced,
+        "city": city,
+        "body": body_type,
         "engine_volume": engine_volume,
-        "fuel_type": fuel_type,
-        "wheel_drive": wheel_drive,
+        "mileage": mileage,
+        "gear_type": gear_type,
+        "steering_wheel": steering_wheel,
         "color": color,
+        "wheel_drive": wheel_drive,
+        "clearenced": clear,
+        "fuel_type": fuel_type,
     }
+
+    arr = [
+        3434,
+        brand,
+        model,
+        year,
+        city,
+        body_type,
+        engine_volume,
+        mileage,
+        gear_type,
+        steering_wheel,
+        color,
+        wheel_drive,
+        clear,
+        0,
+        500000,
+        fuel_type,
+        0,
+    ]
+
+    pred_price = None
+    if all(v is not None for v in arr):
+        pred_price = predict(arr)
 
     context = {
         "brands": brands,
@@ -58,6 +107,9 @@ def predict_car(request):
         "cities": cities,
         "attributes": attributes,
         "params": params,
+        "prediction": pred_price,
+        "gear_types": gear_types,
+        "steering_wheels": steering_wheels,
     }
     return render(request, "car/predict_car.html", context=context)
 
