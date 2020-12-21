@@ -409,3 +409,11 @@ def get_colors():
         "сиреневый металлик",
     ]
     return colors
+
+
+def get_gear_type():
+    return ["механика", "автомат", "вариатор", "типтроник", "робот"]
+
+
+def get_steering_wheel():
+    return ["слева", "справа"]
